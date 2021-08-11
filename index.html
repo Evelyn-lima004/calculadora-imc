@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>imc</title>
-    <link rel="stylesheet" href="style.css"
+
 </head>
 <body>
     <header>
@@ -14,7 +18,7 @@
        <section CLASS= "categorias" >
         <table>
             <thead>
-                <th>CATEGORIA</th>
+                <th colspan="2">CATEGORIA</th>
             </thead>
             <tbody>
                 <tr>
@@ -50,16 +54,16 @@
                    <label>Nome:</label>
                    <input type= "text">
                </div>
-               <div class= "campo">
+               <div class= "campo unidade" data-unidade="metros">
                 <label>Altura</label>
                 <input type= "text">
             </div>
-            <div class= "campo">
+            <div class= "campo unidade" data-unidade="quilos">
                 <label>Peso:</label>
                 <input type= "text">
             </div>
             <button type="button">CALCULAR</button>
-            <div class="resultado" id="resultado"></div>
+            <div class="resultado" id="resultado">texto para teste</div>
            </form>
        </section>
     </main>
