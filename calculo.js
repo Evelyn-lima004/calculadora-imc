@@ -34,7 +34,7 @@ function exibirResultado(){
     const imc = calcularIMC(peso,altura)
     const classificacao = classificar(imc)
    
-   //toFixed - fixa as casas decimais
+                                        //toFixed fixa as casas decimais
     resultado.innerHTML = nome  + " seu imc é " + imc.toFixed(1) + " e você esta" + classificacao
     }else
     resultado.textContent = "preencha os campos"
