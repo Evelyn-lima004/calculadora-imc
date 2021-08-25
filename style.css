@@ -144,6 +144,14 @@ section{
      font-weight: 200;
  }
 
+ .azul{
+    color: blue;
+}
+
+.vermelho{
+    color: brown;
+}
+
  @media (max-width: 768px){
      .categorias{
          display: none;
