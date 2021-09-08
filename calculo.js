@@ -1,51 +1,42 @@
-function calcularIMC (peso,altura){
-    return peso/(altura**2)
-}
+const botao = document.getElementById("botao")
 
-function classificar(imc){
-    let categoria
-    if (imc <18.5) {
-        categoria = "abaixo do peso"
-    } else if (imc < 25){
-        categoria = " com peso ideal. <span class='azul'>Parabens</span>"
-    }else if (imc < 30){
-        categoria = " levemente acima do peso"
-    } else if (imc < 35 ){
-        categoria = "com obesidade I"
-    }else if( imc < 40){
-        categoria = "com obesidade II"
-    }else{
-    categoria = "obesidade III, <span class='vermelho'> cuidado </span>"
-    }
-    return categoria
-}
-
-function camposValidos(){
-return document.querySelector("form").reportValidity()
-}
-
-function exibirResultado(){
-    const resultado = document.getElementById("resultado")
+function calculoImc() {
     const nome = document.getElementById("nome").value
-    const peso = document.getElementById("peso").value.replace(",",".")
-    const altura = document.getElementById("altura").value.replace(",",".")
+    const altura = document.getElementById("altura").value
+    const peso = document.getElementById("peso").value
+    const resultado = document.getElementById("resultado")
 
-    if(camposValidos()){
-    const imc = calcularIMC(peso,altura)
-    const classificacao = classificar(imc)
-   
-                                        //toFixed fixa as casas decimais
-    resultado.innerHTML = nome  + " seu imc é " + imc.toFixed(1) + " e você esta" + classificacao
-    }else
-    resultado.textContent = "preencha os campos"
+    if (nome == '' || altura == '' || peso == '') {
+        resultado.textContent = 'Preencha todos os campos!'
+    } else {
+        const valorImc = (peso / (altura * altura)).toFixed(1)
+
+        let classificacao = '';
+        let frase = '';
+
+        if (valorImc < 18.5) {
+            classificacao = 'abaixo do peso.'
+        } else if (valorImc >= 18.5 && valorImc < 25) {
+            classificacao = 'Peso ideal <span class="blue">Parabéns!</span>'
+        } else if (valorImc >= 25 && valorImc < 30) {
+            classificacao = 'Acima do peso'
+        } else if (valorImc >= 30 && valorImc < 35) {
+            classificacao = 'Obesidade grau I.'
+        } else if (valorImc >= 35 && valorImc < 40) {
+            classificacao = 'Obesidade grau II.'
+        } else {
+            classificacao = 'Obesidade grau III. <span class="red">Cuidado!</span>'
+        }
+
+        resultado.innerHTML = `${nome}, seu IMC é  ${valorImc}. Seu estado é: ${classificacao} `
+    }
 }
 
-
-function capturarEnter(evento){
-    if(evento.key == "enter")
-    exibirResultado()
+function capturarEnter(event) {
+    if (event.key == "Enter") {
+        calculoImc()
+    }
 }
-//eventos
 
-document.getElementById("calcular").addEventListener("click", exibirResultado)
-documento.querySelector("form").addEventListener("keypress",capturaEnter)
+botao.addEventListener('click', calculoImc)
+document.querySelector('form').addEventListener('keypress', capturarEnter)
